@@ -15,7 +15,8 @@ const NewsBoard = ({ category, onLoadingChange }) => {
 
 
             try {
-                let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}`;
+                // let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}`;
+                let url = `https://gnews.io/api/v4/search?q=${category}&lang=en&country=us&max=100&apikey=${import.meta.env.VITE_API_KEY}`;
                 const response = await fetch(url);
 
                 if (!response.ok) {
@@ -82,7 +83,7 @@ const NewsBoard = ({ category, onLoadingChange }) => {
                             <NewsItem
                                 title={news.title}
                                 description={news.description}
-                                src={news.urlToImage}
+                                src={news.image}
                                 url={news.url}
                             />
                         </Col>
